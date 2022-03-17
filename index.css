@@ -1,11 +1,26 @@
 body {
     margin: 0;
     font-family: sans-serif;
+    color: aliceblue
 }
 
-#ricktastic-header img {
+#img-header {
+    display: flex;
     justify-content: center;
     background: midnightblue;
+}
+
+#img-header img {
     height: 500px;
     width: 1000px;
+}
+
+#text-header {
+    display: flex;
+    justify-content: center;
+    background: midnightblue;
+}
+
+.container {
+    background: midnightblue;
 }
