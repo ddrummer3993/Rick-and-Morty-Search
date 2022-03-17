@@ -7,17 +7,64 @@
     </head>
     <body>
         <div id="ricktastic-header">
-            <h3>Here lies a ricktastic header for the page!</h3>
             <img
                 src="https://dreamtexltd.com/wp-content/uploads/2019/02/rick-and-morty-header.jpg"
                 alt="ricktastic-header"
             />
+            <h3>Here lies a ricktastic header for the page!</h3>
         </div>
 
         <div class="container">
-            <form class="character-search"></form>
-            <form class="location-search"></form>
-            <form class="episode-search"></form>
+            <form class="character-search">
+                <h4>Search by Character:</h4>
+                <input
+                type="text"    
+                name="name"
+                value=""
+                placeholder="Enter a characters name"
+                class="input-text"
+                />
+                <input
+                    type="submit"
+                    name="submit-character"
+                    value="Search Characters"
+                    class="submit"
+                />
+            </form>
+            <br />
+            <form class="location-search">
+                <h4>Search by Location:</h4>
+                <input
+                type="text"    
+                name="location"
+                value=""
+                placeholder="Enter a location"
+                class="input-text"
+                />
+                <input
+                    type="submit"
+                    name="submit-location"
+                    value="Search Locations"
+                    class="submit"
+                />
+            </form>
+            <br />
+            <form class="episode-search">
+                <h4>Search by episode:</h4>
+                <input
+                type="text"    
+                name="episode"
+                value=""
+                placeholder="Enter an Episode"
+                class="input-text"
+                />
+                <input
+                    type="submit"
+                    name="submit-episode"
+                    value="Search Episodes"
+                    class="submit"
+                />
+            </form>
         </div>
 
         <script type="text/javascript"  src="index.js"></script>
