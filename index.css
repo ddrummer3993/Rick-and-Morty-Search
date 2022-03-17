@@ -21,6 +21,10 @@ body {
     background: midnightblue;
 }
 
-.container {
+.form-container {
     background: midnightblue;
+}
+
+.card {
+    color: black;
 }
