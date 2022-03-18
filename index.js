@@ -114,17 +114,9 @@ function createLocationCard(obj) {
     card.appendChild(locationDimension);
     card.appendChild(locationResidents);
 
-    
+    document.querySelector('#location-card-container').appendChild(card);
 }
 
-/*function fetchCharacterName(url) {
-    fetch(url)
-    .then(resp => resp.json())
-    .then(data => {
-        console.log(data.name);
-        return data.name;
-    });
-}; */
 
 ////////////////////////////////---EPISODES---/////////////////////////////////////////////////////
 
