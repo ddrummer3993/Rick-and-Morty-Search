@@ -1,20 +1,11 @@
 
 //fetch character info upon click of "Search Characters" button
 
-document.querySelector('.character-search').addEventListener('submit', handleSubmit);
-
-//fetch Location info upon click of "Search Locations" button
-
-document.querySelector('.location-search').addEventListener('submit', handleSubmit);
-
-//fetch episode info upon click of "Search Episodes" button
-
-document.querySelector('.episode-search').addEventListener('submit', handleSubmit);
-
+document.querySelector('.character-search').addEventListener('submit', fetchCharacter);
 
 //create handleSubmit function for character search -- GET character requsted in search bar
 
-function handleSubmit(event) {
+function fetchCharacter(event) {
     event.preventDefault();
     let characterName = event.target.name.value
     return fetch(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
@@ -68,5 +59,21 @@ function createCard(obj) {
     card.appendChild(characterLocation);
     card.appendChild(characterEpisodes);
 
-    document.querySelector('#card-container').appendChild(card);
+    document.querySelector('#character-card-container').appendChild(card);
 }
+
+////////////////////////////////////////////////////////////////////////////
+
+//fetch Location info upon click of "Search Locations" button
+
+document.querySelector('.location-search').addEventListener('submit', fetchLocation);
+
+function fetchLocation(event) {}
+
+
+
+//fetch episode info upon click of "Search Episodes" button
+
+document.querySelector('.episode-search').addEventListener('submit', fetchEpisode);
+
+function fetchEpisode (event) {}
