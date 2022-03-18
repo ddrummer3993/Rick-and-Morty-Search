@@ -1,4 +1,6 @@
 
+///////////////////////////////---CHARACTERS---//////////////////////////////////////////////
+
 //fetch character info upon click of "Search Characters" button
 
 document.querySelector('.character-search').addEventListener('submit', fetchCharacter);
@@ -13,13 +15,13 @@ function fetchCharacter(event) {
     .then(data => {
         console.log(data)
         characterObjArray = data.results;
-        characterObjArray.map(obj => createCard(obj));
+        characterObjArray.map(obj => createCharacterCard(obj));
     });
 };
 
 //create card function
 
-function createCard(obj) {
+function createCharacterCard(obj) {
     let card = document.createElement('div');
     card.classList.add('card')
 
@@ -48,7 +50,9 @@ function createCard(obj) {
     for (let episode of episodeArray) {
         let newEpisode = document.createElement('li');
         newEpisode.innerText = `${episode}`;
-        characterEpisodes.appendChild(newEpisode);
+        console.log(newEpisode)
+        console.log(characterEpisodes);
+        //characterEpisodes.appendChild(newEpisode);
     };
 
     card.appendChild(characterImg);
@@ -62,15 +66,67 @@ function createCard(obj) {
     document.querySelector('#character-card-container').appendChild(card);
 }
 
-////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////---LOCATIONS---//////////////////////////////////////////////
 
 //fetch Location info upon click of "Search Locations" button
 
 document.querySelector('.location-search').addEventListener('submit', fetchLocation);
 
-function fetchLocation(event) {}
+function fetchLocation(event) {
+    event.preventDefault();
+    return fetch(`https://rickandmortyapi.com/api/location/?name=${event.target.location.value}`)
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data)
+        characterObjArray = data.results;
+        characterObjArray.map(obj => createLocationCard(obj));
+    });
+}
 
+function createLocationCard(obj) {
+    let card = document.createElement('div');
+    card.classList.add('card')
 
+    let locationName = document.createElement('h2');
+    locationName.innerText = 'Location Name: ' + obj.name;
+
+    let locationType = document.createElement('p');
+    locationType.innerText = 'Type: ' + obj.type;
+
+    let locationDimension = document. createElement('p');
+    locationDimension.innerText = 'Dimension: ' + obj.dimension;
+
+    let locationResidents = document.createElement('ul');
+    locationResidents.innerText = 'Location Residents: ';
+    let residentsArray = obj.residents;
+    for (let resident of residentsArray) {
+        let newRes = document.createElement('li');
+        fetch(resident)
+        .then(resp => resp.json())
+        .then(data => {
+            newRes.innerText = `${data.name}`
+            return locationResidents.appendChild(newRes);
+        });
+    };
+
+    card.appendChild(locationName);
+    card.appendChild(locationType);
+    card.appendChild(locationDimension);
+    card.appendChild(locationResidents);
+
+    
+}
+
+/*function fetchCharacterName(url) {
+    fetch(url)
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data.name);
+        return data.name;
+    });
+}; */
+
+////////////////////////////////---EPISODES---/////////////////////////////////////////////////////
 
 //fetch episode info upon click of "Search Episodes" button
 
