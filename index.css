@@ -43,6 +43,14 @@ body {
     
 }
 
+.char-img {
+    margin-bottom: 15px;
+}
+
+p {
+    margin:8px
+}
+
 button {
     color: #35C9DD;
     background-color: rgb(80, 80, 80)

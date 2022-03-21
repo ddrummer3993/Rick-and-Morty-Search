@@ -50,7 +50,7 @@ function createCharacterCard(obj) {
     characterImg.classList.add('char-img');
 
     let characterName = document.createElement('h2');
-    characterName.innerText = 'Name: ' + obj.name;
+    characterName.innerText = obj.name;
 
     let characterStatus = document.createElement('p');
     characterStatus.innerText = 'Status: ' + obj.status;
