@@ -1,4 +1,6 @@
 
+// create Rick and Morty character cards upon page load
+
 document.addEventListener("DOMContentLoaded", () => {
     fetch('https://rickandmortyapi.com/api/character/1,2')
     .then(resp => resp.json())
@@ -10,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 });
 
+const characterContainer = document.querySelector('#character-card-container');
+const locationContainer = document.querySelector('#location-card-container');
+const episodeContainer = document.querySelector('#episode-card-container');
 
 
 ///////////////////////////////---CHARACTERS---//////////////////////////////////////////////
@@ -22,6 +27,9 @@ document.querySelector('.character-search').addEventListener('submit', fetchChar
 
 function fetchCharacter(event) {
     event.preventDefault();
+    characterContainer.style.display = "block";
+    locationContainer.style.display = "none";
+    episodeContainer.style.display = "none";
     let characterName = event.target.name.value
     return fetch(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
     .then(resp => resp.json())
@@ -57,6 +65,9 @@ function createCharacterCard(obj) {
     let characterLocation = document.createElement('p');
     characterLocation.innerText = 'Last Known Location: ' + obj.location.name;
 
+    //let charEpisodeButton = document.createElement('button');
+
+
     let characterEpisodes = document.createElement('ul');
     characterEpisodes.innerText = 'Seen in Episodes: '
     let episodeArray = obj.episode;
@@ -89,6 +100,9 @@ document.querySelector('.location-search').addEventListener('submit', fetchLocat
 
 function fetchLocation(event) {
     event.preventDefault();
+    characterContainer.style.display = "none";
+    locationContainer.style.display = "block";
+    episodeContainer.style.display = "none";
     return fetch(`https://rickandmortyapi.com/api/location/?name=${event.target.location.value}`)
     .then(resp => resp.json())
     .then(data => {
@@ -140,6 +154,9 @@ document.querySelector('.episode-search').addEventListener('submit', fetchEpisod
 
 function fetchEpisode(event) {
     event.preventDefault();
+    characterContainer.style.display = "none";
+    locationContainer.style.display = "none";
+    episodeContainer.style.display = "block";
     return fetch(`https://rickandmortyapi.com/api/episode/?episode=${event.target.episode.value}`)
     .then(resp => resp.json())
     .then(data => {
