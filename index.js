@@ -70,7 +70,6 @@ function createCharacterCard(obj) {
 
     let showEpisodes = false;
     charEpisodeButton.addEventListener("click", () =>{
-        console.log('im working!')
         showEpisodes = !showEpisodes;
         if (showEpisodes) {
             characterEpisodes.style.display = "block";
@@ -80,7 +79,6 @@ function createCharacterCard(obj) {
     })
 
     let characterEpisodes = document.createElement('ul');
-    characterEpisodes.id = 'char-episodes';
     characterEpisodes.style.display = "none";
     characterEpisodes.innerText = 'Seen in Episodes: '
     let episodeArray = obj.episode;
@@ -138,7 +136,22 @@ function createLocationCard(obj) {
     let locationDimension = document. createElement('p');
     locationDimension.innerText = 'Dimension: ' + obj.dimension;
 
+    let locResButton = document.createElement('button');
+    locResButton.classList.add('button');
+    locResButton.innerText = "See Residents";
+
+    let showResidents = false;
+    locResButton.addEventListener("click", () =>{
+        showResidents = !showResidents;
+        if (showResidents) {
+            locationResidents.style.display = "block";
+        } else {
+            locationResidents.style.display = "none";        
+        };
+    })
+
     let locationResidents = document.createElement('ul');
+    locationResidents.style.display = "none";
     locationResidents.innerText = 'Location Residents: ';
     let residentsArray = obj.residents;
     for (let resident of residentsArray) {
@@ -154,6 +167,7 @@ function createLocationCard(obj) {
     card.appendChild(locationName);
     card.appendChild(locationType);
     card.appendChild(locationDimension);
+    card.appendChild(locResButton);
     card.appendChild(locationResidents);
 
     document.querySelector('#location-card-container').appendChild(card);
@@ -191,7 +205,22 @@ function createEpisodeCard(obj) {
     let episodeAirDate = document.createElement('p');
     episodeAirDate.innerText = 'Air Date: ' + obj.air_date;
 
+    let epCharactersButton = document.createElement('button');
+    epCharactersButton.classList.add('button');
+    epCharactersButton.innerText = "See Episodes";
+
+    let showCharacters = false;
+    epCharactersButton.addEventListener("click", () =>{
+        showCharacters = !showCharacters;
+        if (showCharacters) {
+            episodeCharacters.style.display = "block";
+        } else {
+            episodeCharacters.style.display = "none";        
+        };
+    })
+
     let episodeCharacters = document.createElement('ul');
+    episodeCharacters.style.display = "none";
     episodeCharacters.innerText = 'Episode Characters: ';
     let charactersArray = obj.characters;
     for (let character of charactersArray) {
@@ -207,6 +236,7 @@ function createEpisodeCard(obj) {
     card.appendChild(episodeName);
     card.appendChild(episodeCode);
     card.appendChild(episodeAirDate);
+    card.appendChild(epCharactersButton);
     card.appendChild(episodeCharacters);
 
     document.querySelector('#episode-card-container').appendChild(card);
