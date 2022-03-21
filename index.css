@@ -23,8 +23,26 @@ body {
 
 .form-container {
     background: midnightblue;
+    height: 300px;
+}
+
+.results-container {
+    background: midnightblue;
 }
 
 .card {
-    color: black;
+    color: aliceblue;
+    text-align: left;
+    border:grey solid 1px;
+    padding: 1rem;
+    width: 300px;
+    height: 600px;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    
+}
+
+h4 {
+    margin: 25px 0px;
+    margin-top: 0px; 
 }

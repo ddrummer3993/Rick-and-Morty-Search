@@ -246,7 +246,6 @@ function createEpisodeCard(obj) {
 //create deleteChildren function
 
 function deleteChildren(parentNode) {
-    console.log(parentNode);
     let parent = parentNode;
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
