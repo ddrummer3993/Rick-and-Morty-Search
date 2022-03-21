@@ -67,22 +67,32 @@ function createCharacterCard(obj) {
     let charEpisodeButton = document.createElement('button');
     charEpisodeButton.classList.add('button');
     charEpisodeButton.innerText = "See Episodes";
+
+    let showEpisodes = false;
     charEpisodeButton.addEventListener("click", () =>{
         console.log('im working!')
-        let characterEpisodes = document.createElement('ul');
-        characterEpisodes.innerText = 'Seen in Episodes: '
-        let episodeArray = obj.episode;
-        for (let episode of episodeArray) {
-            let newEpisode = document.createElement('li');
-            fetch(episode)
-            .then(resp => resp.json())
-            .then(data => {
-                newEpisode.innerText = `${data.episode} - ${data.name}`;
-                characterEpisodes.appendChild(newEpisode);
-                card.appendChild(characterEpisodes);
-        })
-    };
+        showEpisodes = !showEpisodes;
+        if (showEpisodes) {
+            characterEpisodes.style.display = "block";
+        } else {
+            characterEpisodes.style.display = "none";        
+        };
     })
+
+    let characterEpisodes = document.createElement('ul');
+    characterEpisodes.id = 'char-episodes';
+    characterEpisodes.style.display = "none";
+    characterEpisodes.innerText = 'Seen in Episodes: '
+    let episodeArray = obj.episode;
+    for (let episode of episodeArray) {
+        let newEpisode = document.createElement('li');
+        fetch(episode)
+        .then(resp => resp.json())
+        .then(data => {
+            newEpisode.innerText = `${data.episode} - ${data.name}`;
+            characterEpisodes.appendChild(newEpisode);
+    })
+};
 
     card.appendChild(characterImg);
     card.appendChild(characterName);
@@ -91,6 +101,7 @@ function createCharacterCard(obj) {
     card.appendChild(characterOrigin);
     card.appendChild(characterLocation);
     card.appendChild(charEpisodeButton);
+    card.appendChild(characterEpisodes);
 
     document.querySelector('#character-card-container').appendChild(card);
 }
