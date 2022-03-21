@@ -207,7 +207,7 @@ function createEpisodeCard(obj) {
 
     let epCharactersButton = document.createElement('button');
     epCharactersButton.classList.add('button');
-    epCharactersButton.innerText = "See Episodes";
+    epCharactersButton.innerText = "See Characters";
 
     let showCharacters = false;
     epCharactersButton.addEventListener("click", () =>{
