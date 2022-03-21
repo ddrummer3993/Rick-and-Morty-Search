@@ -53,7 +53,13 @@ function createCharacterCard(obj) {
     characterName.innerText = obj.name;
 
     let characterStatus = document.createElement('p');
-    characterStatus.innerText = 'Status: ' + obj.status;
+    if (obj.status === 'Alive'){
+        characterStatus.innerText = 'Status: ' + '🟢 ' + obj.status;
+    } else if (obj.status === 'Dead') {
+        characterStatus.innerText = 'Status: ' + '🔴 ' + obj.status; 
+    } else {
+        characterStatus.innerText = 'Status: ' + '🔘 ' + obj.status;
+    };
 
     let characterSpecies = document.createElement('p');
     characterSpecies.innerText = 'Species: ' + obj.species;
