@@ -23,7 +23,7 @@ body {
 
 .form-container {
     background: midnightblue;
-    height: 300px;
+    height: 360px;
 }
 
 .results-container {
@@ -36,13 +36,24 @@ body {
     border:grey solid 1px;
     padding: 1rem;
     width: 300px;
-    height: 600px;
+    height: auto;
     display: inline-grid;
     margin: 1rem 2rem;
+    box-shadow: 3px 4px rgb(152, 226, 40)
     
 }
 
+h1 {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+h2 { 
+    margin: 20px 0px;
+    margin-top: 0px;
+}
+
 h4 {
-    margin: 25px 0px;
+    margin: 15px 0px;
     margin-top: 0px; 
 }
