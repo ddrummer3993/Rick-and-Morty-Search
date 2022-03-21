@@ -1,4 +1,17 @@
 
+document.addEventListener("DOMContentLoaded", () => {
+    fetch('https://rickandmortyapi.com/api/character/1,2')
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data);
+        for (const charObj of data) {
+            createCharacterCard(charObj);
+        }
+    })
+});
+
+
+
 ///////////////////////////////---CHARACTERS---//////////////////////////////////////////////
 
 //fetch character info upon click of "Search Characters" button
