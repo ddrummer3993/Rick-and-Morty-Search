@@ -13,8 +13,8 @@ function fetchCharacter(event) {
     return fetch(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
-        characterObjArray = data.results;
+        console.log(data);
+        let characterObjArray = data.results;
         characterObjArray.map(obj => createCharacterCard(obj));
     });
 };
@@ -49,10 +49,12 @@ function createCharacterCard(obj) {
     let episodeArray = obj.episode;
     for (let episode of episodeArray) {
         let newEpisode = document.createElement('li');
-        newEpisode.innerText = `${episode}`;
-        console.log(newEpisode)
-        console.log(characterEpisodes);
-        //characterEpisodes.appendChild(newEpisode);
+        fetch(episode)
+        .then(resp => resp.json())
+        .then(data => {
+            newEpisode.innerText = `${data.episode} - ${data.name}`;
+            characterEpisodes.appendChild(newEpisode);
+        })
     };
 
     card.appendChild(characterImg);
@@ -77,9 +79,9 @@ function fetchLocation(event) {
     return fetch(`https://rickandmortyapi.com/api/location/?name=${event.target.location.value}`)
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
-        characterObjArray = data.results;
-        characterObjArray.map(obj => createLocationCard(obj));
+        console.log(data);
+        let locationObjArray = data.results;
+        locationObjArray.map(obj => createLocationCard(obj));
     });
 }
 
@@ -117,11 +119,54 @@ function createLocationCard(obj) {
     document.querySelector('#location-card-container').appendChild(card);
 }
 
-
 ////////////////////////////////---EPISODES---/////////////////////////////////////////////////////
 
 //fetch episode info upon click of "Search Episodes" button
 
 document.querySelector('.episode-search').addEventListener('submit', fetchEpisode);
 
-function fetchEpisode (event) {}
+function fetchEpisode(event) {
+    event.preventDefault();
+    return fetch(`https://rickandmortyapi.com/api/episode/?episode=${event.target.episode.value}`)
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data);
+        let episodeObjArray = data.results;
+        episodeObjArray.map(obj => createEpisodeCard(obj));
+    });
+}
+
+function createEpisodeCard(obj) {
+    let card = document.createElement('div');
+    card.classList.add('card');
+
+    let episodeName = document.createElement('h2');
+    episodeName.innerText = 'Episode Name: ' + obj.name;
+
+    let episodeCode = document.createElement('p');
+    episodeCode.innerText = 'Code: ' + obj.episode;
+
+    let episodeAirDate = document.createElement('p');
+    episodeAirDate.innerText = 'Air Date: ' + obj.air_date;
+
+    let episodeCharacters = document.createElement('ul');
+    episodeCharacters.innerText = 'Episode Characters: ';
+    let charactersArray = obj.characters;
+    for (let character of charactersArray) {
+        let newChar = document.createElement('li');
+        fetch(character)
+        .then(resp => resp.json())
+        .then(data => {
+            newChar.innerText = `${data.name}`
+            return episodeCharacters.appendChild(newChar);
+        });
+    }
+
+    card.appendChild(episodeName);
+    card.appendChild(episodeCode);
+    card.appendChild(episodeAirDate);
+    card.appendChild(episodeCharacters);
+
+    document.querySelector('#episode-card-container').appendChild(card);
+
+} 
