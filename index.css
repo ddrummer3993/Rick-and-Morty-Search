@@ -43,6 +43,24 @@ body {
     
 }
 
+button {
+    color: #35C9DD;
+    background-color: rgb(80, 80, 80)
+}
+
+button:hover {
+    background-color: rgb(100, 100, 100);
+}
+
+.submit {
+    color: #35C9DD;
+    background-color: rgb(80, 80, 80)
+}
+
+.submit:hover {
+    background-color: rgb(100, 100, 100);
+}
+
 h1 {
     margin-top: 20px;
     margin-bottom: 40px;
