@@ -134,7 +134,7 @@ function createLocationCard(obj) {
     card.classList.add('card')
 
     let locationName = document.createElement('h2');
-    locationName.innerText = 'Location Name: ' + obj.name;
+    locationName.innerText = obj.name;
 
     let locationType = document.createElement('p');
     locationType.innerText = 'Type: ' + obj.type;
@@ -203,7 +203,7 @@ function createEpisodeCard(obj) {
     card.classList.add('card');
 
     let episodeName = document.createElement('h2');
-    episodeName.innerText = 'Episode Name: ' + obj.name;
+    episodeName.innerText = obj.name;
 
     let episodeCode = document.createElement('p');
     episodeCode.innerText = 'Code: ' + obj.episode;
