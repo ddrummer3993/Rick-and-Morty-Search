@@ -12,10 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 });
 
-const characterContainer = document.querySelector('#character-card-container');
-const locationContainer = document.querySelector('#location-card-container');
-const episodeContainer = document.querySelector('#episode-card-container');
-
 
 ///////////////////////////////---CHARACTERS---//////////////////////////////////////////////
 
@@ -27,8 +23,7 @@ document.querySelector('.character-search').addEventListener('submit', fetchChar
 
 function fetchCharacter(event) {
     event.preventDefault();
-    deleteChildren(locationContainer);
-    deleteChildren(episodeContainer);
+    deleteAllChildren();
     let characterName = event.target.name.value
     return fetch(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
     .then(resp => resp.json())
@@ -118,8 +113,7 @@ document.querySelector('.location-search').addEventListener('submit', fetchLocat
 
 function fetchLocation(event) {
     event.preventDefault();
-    deleteChildren(characterContainer);
-    deleteChildren(episodeContainer);
+    deleteAllChildren();
     return fetch(`https://rickandmortyapi.com/api/location/?name=${event.target.location.value}`)
     .then(resp => resp.json())
     .then(data => {
@@ -187,8 +181,7 @@ document.querySelector('.episode-search').addEventListener('submit', fetchEpisod
 
 function fetchEpisode(event) {
     event.preventDefault();
-    deleteChildren(characterContainer);
-    deleteChildren(locationContainer);
+    deleteAllChildren();
     return fetch(`https://rickandmortyapi.com/api/episode/?episode=${event.target.episode.value}`)
     .then(resp => resp.json())
     .then(data => {
@@ -251,9 +244,19 @@ function createEpisodeCard(obj) {
 
 //create deleteChildren function
 
+const characterContainer = document.querySelector('#character-card-container');
+const locationContainer = document.querySelector('#location-card-container');
+const episodeContainer = document.querySelector('#episode-card-container');
+
 function deleteChildren(parentNode) {
     let parent = parentNode;
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     };
+};
+
+function deleteAllChildren() {
+    deleteChildren(characterContainer);
+    deleteChildren(locationContainer);
+    deleteChildren(episodeContainer);
 };
