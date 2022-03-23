@@ -55,6 +55,10 @@ For Example, if you wanted to search for Season 2 Episode 8, you would enter: S0
 then see the card at the bottom of the page for "Interdimensional Cable 2: Tempting Fate" along 
 with its appropriate information.
 
+## Video Walkthrough
+
+A video Walkthrough for the project can be found [Here](https://youtu.be/G_TwaBVWqMw).
+
 ## Project History
 
 This project was completed by David Drummer in March/2022 as a Phase-1 final project via the Flatiron 
